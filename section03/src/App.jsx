@@ -1,45 +1,18 @@
-// import sampleImg from "./assets/react-core-concepts.png";
 import { CORE_CONCEPTS } from "./data";
-
-// const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
-// 옮김 그리고 가져옴
 import Header from "./components/Header/Header";
-// function genRandomInt(max) {
-//   return Math.floor(Math.random() * (max + 1));
-// }
-
-// function Header() {
-//   const rand = genRandomInt(reactDescriptions.length - 1);
-//   console.log(rand);
-//   return (
-//     <header>
-//       <img src={sampleImg} alt="Stylized atom" />
-//       <h1>React Essentials</h1>
-//       <p>
-//         {reactDescriptions[rand]} React concepts you will need for almost any
-//         app you are going to build!
-//       </p>
-//     </header>
-//   );
-// }
-
 import CoreConcept from "./components/CoreConcept";
-// // function CoreConcept(probs) { // probs는 하나다!
-// function CoreConcept({ image, title, desc }) { // 하지만 분리 또한 가능하다. probs를 분리한다고 생각하면된다.
-//   // 하지만 위에서처럼 분리 할 경우 모든 이름을 맞춰줘야함
-//   return (
-//     <>
-//       <li>
-//         <img src={image}/>
-//         <h3>{title}</h3>
-//         <p>{desc}</p>
-//       </li>
-//     </>
-//   );
-// }
+import TabButton from "./components/TabButton";
+
 
 function App() {
+  let tabContent = 'plz click a button'
+  console.log('tabContent?', tabContent)
+  // TabButton.jsx에 있었음
+  function handleSelected(selectedButton) {
+    tabContent = selectedButton
+    // console.log('work?', tabContent)
+  }
+
   return (
     <div>
       <Header />
@@ -58,10 +31,19 @@ function App() {
               image={CORE_CONCEPTS[0].image}/> */}
           </ul>
         </section>
-        <section id="example">
+        <section id="examples">
+          <h2>Example</h2>
           <menu>
-
+            {/* 함수의 포인트를 넘긴다는 느낌으로 기억하자 */}
+            {/* <TabButton onSelect={handleSelected}>Component!</TabButton>  */}
+            {/* 문제는 위처럼 하면 함수 자체에 인자를 넘길 수 없다는 단점이 있다. */}
+            <TabButton onSelect={() => handleSelected('Component')}>Component!</TabButton> 
+            <TabButton onSelect={() => handleSelected('JSX')}>JSX!</TabButton>
+            <TabButton onSelect={() => handleSelected('Probs')}>Probs!</TabButton>
+            <TabButton onSelect={() => handleSelected('State')}>State!</TabButton>
+            {/* 이런 방법도 있다느 정도만 */}
           </menu>
+          {tabContent}
         </section>
       </main>
     </div>

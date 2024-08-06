@@ -9,7 +9,6 @@ function genRandomInt(max) {
 
 function Header() {
     const rand = genRandomInt(reactDescriptions.length - 1);
-    console.log(rand);
     return (
       <header>
         <img src={sampleImg} alt="Stylized atom" />
