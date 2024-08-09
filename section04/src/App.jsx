@@ -6,9 +6,6 @@ import { useState } from "react"; // use~는 Hooks,
 // Hooks는 컴포넌트 안에서 호출되어야 한다.
 // 가장 탑레벨에서만 된다.
 // useState는 컴포넌트 간의 연결을 관리해준다. 변화감지, 재검토?
-import { Fragment } from "react"; // 부모태그 대체제다. 빈 태그 <></>ㅇ 와 같은 기능이다.
- 
-
 import {EXAMPLES} from './data.js'
 
 
