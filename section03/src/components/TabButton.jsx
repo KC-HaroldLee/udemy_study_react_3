@@ -1,6 +1,6 @@
 // 여기서부터 시작
 
-function TabButton({children, onSelect}) {
+function TabButton({children, onSelect, isSelected}) { // className을 동적으로 설정하기 위해 isSelected추가함
     // 클릭 이벤트
     // document.querySelector('button').addEventListener('click', () => {
     // })
@@ -11,7 +11,7 @@ function TabButton({children, onSelect}) {
 
     return <>
         <li>
-            <button onClick={onSelect}>{children}</button>
+            <button className={isSelected ? 'active' : undefined} onClick={onSelect}>{children}</button>
         </li> 
     </>
 }
