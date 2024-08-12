@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Player( { initName, symbol } ){
+function Player( { initName, symbol, isActive} ){ //isActiv는 각 Player 컴포넌트마다 따로 작동 된다.
   const [ isEditing, setIsEditing ] = useState(false)
   const [ playerName, setPalyerName ] = useState(initName)
 
@@ -29,7 +29,7 @@ function Player( { initName, symbol } ){
     editablePlayerName = <input type="text" required defaultValue={playerName} onChange={handleChange}/> 
   }
   return <>
-      <li>
+    <li className={isActive ? 'active' : undefined}>
       <span className='player'>
         {/* <span className='player-name'>{name}</span> */}
         {editablePlayerName}
