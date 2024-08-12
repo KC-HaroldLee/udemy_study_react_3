@@ -1,13 +1,13 @@
 import Player from "./components/Player.jsx"
-
+import GameBoard from "./components/GameBoard.jsx"
 function App() {
   return <>
     <main>
       <div id="game-container">
         {/* Players */}
         <ol id="players">
-          <Player name="player 1" symbol="O"/>
-          <Player name="player 2" symbol="X"/>
+          <Player initName="player 1" symbol="O"/>
+          <Player initName="player 2" symbol="X"/>
           {/* 아래는 반복되므로 컨포넌트로 만듦 Palyer.jsx */}
           {/* <li>
             <span className='player'>
@@ -25,7 +25,8 @@ function App() {
           </li> */}
         </ol>
 
-        Game board
+        {/* Game board */}
+        <GameBoard />
       </div>
 
       LOG
