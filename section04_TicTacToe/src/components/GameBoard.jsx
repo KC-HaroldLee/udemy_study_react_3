@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import { useState } from "react" // 더 이상 사용하지 않음
 
 const initialGameBoard = [
   // [null, 'X', 'O'],
@@ -7,7 +7,18 @@ const initialGameBoard = [
   [null, null, null]
 ]
 
-function GameBoard({ onSelectSquare, activePlayerSymbol}){ // onSelectSquare은 함수다
+function GameBoard({ onSelectSquare, turns}){ // onSelectSquare은 함수다
+  let gameBoard = initialGameBoard
+
+  // 참고할 객체 
+  //{ square : {row : rowIndex, col : colIndex},
+  //  player : curPlayer } }
+  for (const turn of turns) {
+    const { square, player } = turn
+    const { row , col } = square
+    gameBoard[row][col] = player
+
+  }
   // 쫘악 주석처리 
   // const [gameBoard, setGameBoard] = useState(initialGameBoard) // 객체를 받을 수도 있구나
 
@@ -38,7 +49,14 @@ function GameBoard({ onSelectSquare, activePlayerSymbol}){ // onSelectSquare은 
           {row.map((playerSymbol, colIndex) => 
           // 함수 이름만으로는 인수를 전달 할 수 없다. 따라서
           // <li key={colIndex}><button onClick={handleSelectSquare}>{playerSymbol}</button></li>
-          <li key={colIndex}><button onClick={() => handleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button></li>
+          // handleSelectSquare()가 주석처리되면서 ...
+          // <li key={colIndex}><button onClick={() => handleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button></li>
+          <li key={colIndex}>
+            {/* 중복제외 편하네 */}
+            <button onClick={() => {onSelectSquare(rowIndex, colIndex)}} disabled={playerSymbol !== null}>
+              {playerSymbol}
+            </button>
+          </li>
           )}
         </ol>
       </li>
